@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "dimensional-time": {
+      "hosting": {
+        "dimension-time": [
+          "dimensional-time"
+        ]
+      }
+    }
+  }
+}
