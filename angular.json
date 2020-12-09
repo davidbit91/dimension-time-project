@@ -153,5 +153,8 @@
       }
     }
   },
-  "defaultProject": "dimension-time"
+  "defaultProject": "dimension-time",
+  "cli": {
+    "analytics": "1f2d4328-972d-4904-9178-b42924bc08f6"
+  }
 }
