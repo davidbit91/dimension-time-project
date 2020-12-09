@@ -1,5 +1,5 @@
 # Aplicación Dimension Time
-
+lol
 ### Introducción
 
 Vamos a hacer una aplicación para registrar las horas que vamos a dedicar a la fabricación de la propia aplicación. Nuestra app servirá para calcular nuestra velocidad de programación.
