@@ -1,3 +1,4 @@
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MaterialModule } from './shared/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -26,7 +27,8 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
