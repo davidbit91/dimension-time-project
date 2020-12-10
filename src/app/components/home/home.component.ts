@@ -1,3 +1,4 @@
+import { AuthService } from './../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,14 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  loggedIn: boolean;
-  constructor() {
-    this.loggedIn = false;
-  }
+  loggedIn = false;
+  constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
-
-  yeet() {
-    this.loggedIn = !this.loggedIn;
+  ngOnInit(): void {
+    this.auth.isLogged$().subscribe((user) => {
+      if (user && user.uid) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    });
   }
 }

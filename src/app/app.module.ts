@@ -13,8 +13,9 @@ import { TaskCreationComponent } from './components/task-creation/task-creation.
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestore,
-    AngularFireAuth,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
