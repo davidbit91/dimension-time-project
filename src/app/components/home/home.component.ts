@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   loggedIn = false;
-  constructor(private auth: AuthService) {}
-
-  ngOnInit(): void {
+  constructor(private auth: AuthService) {
     this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.loggedIn = true;
@@ -18,5 +16,9 @@ export class HomeComponent implements OnInit {
         this.loggedIn = false;
       }
     });
+    console.log('HOME');
+    console.log(this.loggedIn);
   }
+
+  ngOnInit(): void {}
 }

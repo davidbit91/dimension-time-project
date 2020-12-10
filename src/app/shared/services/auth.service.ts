@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   isLogged$(): Observable<any> {
-    return this.afAuth.authState.pipe(first());
+    return this.afAuth.authState.pipe();
   }
 
   logout() {

@@ -8,17 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private auth: AuthService) {}
   title = 'dimension-time';
   loggedIn = false;
 
-  ngOnInit(): void {
+  constructor(private auth: AuthService) {
     this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.loggedIn = true;
       } else {
         this.loggedIn = false;
       }
+      console.log(this.loggedIn);
+      console.log('APP');
     });
   }
+
+  ngOnInit(): void {}
 }
