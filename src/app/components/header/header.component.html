@@ -1,4 +1,9 @@
-<mat-toolbar color='primary'>
-  <span routerLink='/home'>Dimension Time</span>
-
+<mat-toolbar color="primary">
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink='/task-create'>Add task</button>
+  <button mat-menu-item routerLink='/task-list'>Task List</button>
+</mat-menu>
+  <span routerLink="/home">Dimension Time</span>
+  <button class='logout' mat-raised-button color='warn'><mat-icon>exit_to_app</mat-icon></button>
 </mat-toolbar>
