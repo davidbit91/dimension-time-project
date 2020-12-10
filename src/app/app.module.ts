@@ -1,4 +1,4 @@
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from './../environments/environment';
 import { MaterialModule } from './shared/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,6 +12,9 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskCreationComponent } from './components/task-creation/task-creation.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -21,16 +24,18 @@ import { RegisterComponent } from './components/register/register.component';
     TaskListComponent,
     TaskCreationComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestore,
+    AngularFireAuth,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
