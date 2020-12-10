@@ -1,11 +1,16 @@
-<form>
-  <mat-form-field>
-    <mat-label>E-Mail</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input matInput type="password">
-  </mat-form-field>
-  <button mat-raised-button>Login</button>
-</form>
+<mat-card class="form-card">
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password">
+      </mat-form-field>
+      <button mat-raised-button>Login</button>
+    </form>
+  </mat-card-content>
+  <p>If you don't have an account you can register <a routerLink='/register'>here</a></p>
+</mat-card>

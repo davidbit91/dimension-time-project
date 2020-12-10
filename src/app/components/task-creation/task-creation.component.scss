@@ -1,0 +1,45 @@
+mat-card{
+  width:20%;
+  height: 30%;
+  margin:30vh auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #424242;
+  color:white;
+
+}
+
+form{
+  max-width: 100%;
+color:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30vh;
+
+  mat-form-field.ng-invalid.ng-touched {
+    animation: example;
+    animation-duration: 0.3s;
+    margin-bottom: 20px;
+  }
+  @keyframes example {
+    from {
+      margin-bottom: 0;
+    }
+    to {
+      margin-bottom: 20px;
+    }
+  }
+}
+p{
+  font-size: 12px;
+  max-width: 45%;
+}
+
+@media(max-width:1200px){
+  mat-card{
+    width:fit-content;
+  }
+}
