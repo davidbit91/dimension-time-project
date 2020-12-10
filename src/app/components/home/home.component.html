@@ -2,8 +2,8 @@
   <div class="hero-text" *ngIf="!loggedIn">
     <p>Welcome to this web page</p>
 
-    <button mat-raised-button color='primary' (click)="yeet()">Login</button>
-    <p>If you don't have an account you can register <a routerLink='register'>here</a></p>
+    <button mat-raised-button color='primary' routerLink='/login'>Login</button>
+    <p>If you don't have an account you can register <a routerLink='/register'>here</a></p>
   </div>
 </div>
 
