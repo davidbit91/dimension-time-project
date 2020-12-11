@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       this.formGroup.get('email').value,
       this.formGroup.get('password').value
     );
-      this.auth.logout();
+
     this.router.navigate(['/home']);
   }
 
