@@ -1,6 +1,6 @@
 import { AuthService } from './../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/interfaces/user';
+import { iUser } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { User } from 'src/app/shared/interfaces/user';
 })
 export class HomeComponent implements OnInit {
   isLoading: boolean = false;
-  user: User;
+  user: iUser;
   loggedIn = false;
   constructor(private auth: AuthService) {
     this.isLoading = true;

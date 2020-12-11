@@ -1,6 +1,7 @@
-export interface Task {
+export interface iTask {
   id: string;
   name: string;
-  tiempoEstimado: number;
-  tiempoRequirido: number;
+  startTime: number;
+  totalTime: string;
+  isFinished: boolean;
 }

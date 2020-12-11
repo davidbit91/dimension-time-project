@@ -1,20 +1,12 @@
 <mat-card class="form-card">
   <mat-card-content>
-    <form>
+    <form [formGroup]='formGroup'>
       <mat-form-field>
         <mat-label>Select task</mat-label>
-        <mat-select>
-          <mat-option value='peta'>
-            Create new
-          </mat-option>
-          <mat-option value='pinga'>
-            Pinga
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Required time to do</mat-label>
-        <input matInput type="number" autocomplete="off">
+        <mat-select (selectionChange)='addTask()' formControlName='task'>
+          <mat-option value='createNew'>Create new task</mat-option>
+          <mat-option *ngFor='let i of taskList' value='i.name'>{{i}}</mat-option>
+     </mat-select>
       </mat-form-field>
       <button mat-raised-button>Register</button>
     </form>

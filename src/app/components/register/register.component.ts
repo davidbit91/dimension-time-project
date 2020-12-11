@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/shared/interfaces/user';
+import { iUser } from 'src/app/shared/interfaces/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
 import { first, tap } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { first, tap } from 'rxjs/operators';
 })
 export class RegisterComponent implements OnInit {
   formGroup: FormGroup;
-  user: User;
+  user: iUser;
   isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
       id: 'a',
       email: this.formGroup.get('email').value,
       name: this.formGroup.get('name').value,
+      tasks: []
     };
     this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
