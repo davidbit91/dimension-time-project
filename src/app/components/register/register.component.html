@@ -1,20 +1,24 @@
 <mat-card class="form-card">
   <mat-card-content>
-    <form>
+    <form (ngSubmit)="onSubmit()"[formGroup]="formGroup">
       <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput>
+        <mat-label>Name</mat-label>
+        <input matInput name="name" formControlName="name" autocomplete="off">
       </mat-form-field>
       <mat-form-field>
         <mat-label>E-Mail</mat-label>
-        <input matInput>
+        <input matInput type="email" name="email" formControlName="email">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput type="password">
+        <input matInput type="password" name="password" formControlName="password">
       </mat-form-field>
-      <button mat-raised-button>Register</button>
+      <mat-form-field>
+        <mat-label>Repeat Password</mat-label>
+        <input matInput type="password" name="rPassword" formControlName="rPassword">
+      </mat-form-field>
+      <button mat-raised-button type="submit">Register</button>
     </form>
   </mat-card-content>
-  <p>You have an account? login <a routerLink='/login'>here</a></p>
+  <p>You have an account? Login <a routerLink='/login'>here</a></p>
 </mat-card>
