@@ -1,12 +1,11 @@
 <div class="hero-image">
-  <div class="hero-text" *ngIf="!loggedIn">
-    <p>Welcome to this web page</p>
+    <div class="hero-text" *ngIf="!loggedIn">
+        <h1>Welcome to this web page</h1>
 
-    <button mat-raised-button color='primary' routerLink='/login'>Login</button>
-    <p>If you don't have an account you can register <a routerLink='/register'>here</a></p>
-  </div>
-  <div class="hero-text" *ngIf="loggedIn">
-   <p>Welcome {{user}}</p>
-  </div>
+        <button mat-raised-button color='primary' routerLink='/login'>Login</button>
+        <p>If you don't have an account you can register <a routerLink='/register'>here</a></p>
+    </div>
+    <div class="hero-text" *ngIf="loggedIn">
+        <h1>Welcome {{user}}</h1>
+    </div>
 </div>
-<mat-progress-spinner mode="indeterminate" *ngIf='isLoading'></mat-progress-spinner>
