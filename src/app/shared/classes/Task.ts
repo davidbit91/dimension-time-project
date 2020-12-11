@@ -8,8 +8,8 @@ export class Task implements iTask{
     isFinished: boolean;
     user: iUser;
 
-    constructor(id, name,user: iUser){
-      this.id = id;
+    constructor(name,user: iUser){
+      this.id = '';
       this.name= name;
       this.startTime = new Date().getTime();
       this.totalTime = '';

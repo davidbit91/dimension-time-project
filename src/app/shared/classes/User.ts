@@ -7,15 +7,16 @@ export class User implements iUser{
   email: string;
   tasks: iTask[];
 
-  constructor(id,name,email){
+  constructor(id,name,email, tasks : iTask[] | null){
     this.id = id;
     this.name = name;
     this.email = email;
-    this.tasks = [];
+    this.tasks = tasks ? tasks : [];
   }
 
   addTask(task: iTask){
     this.tasks.push(task);
   }
+
 }
 
