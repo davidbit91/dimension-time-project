@@ -34,6 +34,14 @@ p {
   font-size: 12px;
   margin-top: 5px;
 }
+a{
+  text-decoration:none;
+  color: #fff;
+}
+a:hover{
+  text-decoration: underline;
+}
+
 
 @media (max-width: 1200px) {
   mat-card {
