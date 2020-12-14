@@ -1,15 +1,15 @@
-<mat-card *ngFor="let task of user.tasks">
+<mat-card *ngFor="let task of user?.tasks">
     <mat-card-content>
       <h2>{{task.name}}</h2>
       <p *ngIf="task.isFinished">
-        Total time spent on this task: {{task.totalTime | date : "h 'hours' mm 'minutes'"}}
+        Estimated hours for this task: {{calculateTime(task.totalTime)}} hours
       </p>
       <p *ngIf="!task.isFinished">
-        Task started on: {{task.startTime | date : "LLLL d h:mm:ss"}}
+        Task started on: {{task.startTime | date : "LLLL d yyyy H:mm:ss"}}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="finishTask(task.id)">Finish Task</button>
+      <button mat-raised-button color="primary" *ngIf='!task.isFinished' (click)="finishTask(task.id)">Finish Task</button>
     </mat-card-actions>
 </mat-card>
 

@@ -5,13 +5,15 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './shared/guards/login.guard';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent},
-  { path: 'task-create', component: TaskCreationComponent },
+  { path: 'task-create', component: TaskCreationComponent, canActivate: [AuthGuard]},
   { path: 'task-list', component: TaskListComponent },
 ];
 

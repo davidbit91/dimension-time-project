@@ -37,4 +37,10 @@ export class FirestoreService {
       .doc(user.id)
       .update(Object.assign({}, user));
   }
+  updateTask(task) {
+    return this.afs
+      .collection<iTask>('tasks')
+      .doc(task.id)
+      .update(Object.assign({}, task));
+  }
 }

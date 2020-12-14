@@ -4,6 +4,6 @@ export interface iTask {
   id: string;
   name: string;
   startTime: number;
-  totalTime: string;
+  totalTime: number;
   isFinished: boolean;
 }
