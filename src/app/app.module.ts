@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalComponent } from './components/task-creation/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TaskCreationComponent,
     HomeComponent,
     RegisterComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

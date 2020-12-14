@@ -5,7 +5,7 @@
         <mat-label>Select task</mat-label>
         <mat-select (selectionChange)='addTask()' formControlName='task'>
           <mat-option value='createNew'>Create new task</mat-option>
-          <mat-option *ngFor='let i of taskList' value='i.name'>{{i}}</mat-option>
+          <mat-option *ngFor='let i of taskList' value='{{i}}'>{{i}}</mat-option>
      </mat-select>
       </mat-form-field>
       <button mat-raised-button type="submit">Start task</button>

@@ -1,5 +1,7 @@
+import { ModalComponent } from './modal/modal.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/shared/classes/task';
 import { User } from 'src/app/shared/classes/user';
 import { iUser } from 'src/app/shared/interfaces/user';
@@ -13,8 +15,7 @@ import { FirestoreService } from 'src/app/shared/services/firestore.service';
 })
 export class TaskCreationComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private firestore: FirestoreService) {
-    this.taskList = ['peta','pumba','pimba'];
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private firestore: FirestoreService, private dialog: MatDialog) {
   }
   user: iUser;
   formGroup: FormGroup;
@@ -32,12 +33,24 @@ export class TaskCreationComponent implements OnInit {
         })
       }
     });
+    this.taskList = JSON.parse(localStorage.getItem('task'));
   }
 
   addTask(){
-    /* CREA MODAL*/
+    if(this.formGroup.get('task').value == 'createNew'){
+      const dialogRef = this.dialog.open(ModalComponent, {
+        width: '20%',
+        height: '30%',
+        data: ''
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
 
   }
+
 
   onSubmit(){
     const n = this.formGroup.get('task').value;
