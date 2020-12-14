@@ -1,4 +1,5 @@
-<mat-card *ngFor="let task of user?.tasks">
+<div>
+  <mat-card *ngFor="let task of user?.tasks">
     <mat-card-content>
       <h2>{{task.name}}</h2>
       <p *ngIf="task.isFinished">
@@ -12,4 +13,4 @@
       <button mat-raised-button color="primary" *ngIf='!task.isFinished' (click)="finishTask(task.id)">Finish Task</button>
     </mat-card-actions>
 </mat-card>
-
+</div>

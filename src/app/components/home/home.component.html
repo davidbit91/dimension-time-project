@@ -7,6 +7,10 @@
     </div>
     <div class="hero-text" *ngIf="loggedIn">
         <h1>Welcome {{user}}</h1>
+        <div class="homeButtons">
+          <button mat-raised-button color='primary' routerLink='/task-create'>Add Task</button>
+          <button mat-raised-button color='primary' routerLink='/task-list'>Task List</button>
+        </div>
     </div>
 </div>
 <mat-progress-spinner mode="indeterminate" *ngIf='isLoading'></mat-progress-spinner>

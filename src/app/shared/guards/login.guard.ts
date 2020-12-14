@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -7,17 +8,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
-  async canActivate() {
-    const user = await this.authService.isLogged$().toPromise();
-    console.log(user)
-      if (user && user.id) {
-        return true;
-      }
-      else {
-        console.log("entra aquí")
-        this.router.navigate(['/home']);
-        return false;
-
-      }
+  canActivate() {
+    const user = this.authService.isLogged$().pipe(
+      tap(user => {
+        if (user && user.id) {
+          return true;
+        } else {
+          this.router.navigate(['/home']);
+          return false;
+        }
+      })
+    )
+    .subscribe()
   }
 }
+
+*/

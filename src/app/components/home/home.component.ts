@@ -16,14 +16,13 @@ export class HomeComponent implements OnInit {
     this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.loggedIn = true;
-
       } else {
         this.loggedIn = false;
       }
       this.isLoading = false;
     });
     console.log('HOME');
-    console.log(this.loggedIn);
+
   }
 
   ngOnInit(): void {}

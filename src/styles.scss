@@ -1,11 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-html, body { /*height: 100%;*/ }
+html,
 body {
-  color:white;
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  /*height: 100%;*/
+}
+body {
+  color: white;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://wallpapercave.com/wp/wp5299024.jpg");
-  }
+}
 
+@media (max-width: 1000px) {
+  .mat-dialog-container {
+    overflow: visible !important;
+    margin-left: -55px;
+    width:500px !important;
+    height: 300px !important;
+    box-sizing: unset;
+
+
+  }
+}
+
+@media (max-width: 750px){
+  body{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://wallpaperaccess.com/full/1609034.jpg");
+    height: fit-content;
+  }
+}
