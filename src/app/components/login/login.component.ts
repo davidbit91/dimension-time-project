@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
 
+  isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
@@ -25,11 +26,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.auth.login(
       this.formGroup.get('email').value,
       this.formGroup.get('password').value
     );
 
+    this.isLoading = false;
     this.router.navigate(['/home']);
   }
 }

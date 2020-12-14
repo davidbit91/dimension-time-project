@@ -1,5 +1,8 @@
-export interface User {
+import { iTask } from './task';
+
+export interface iUser {
   id: string;
-  username: string;
+  name: string;
   email: string;
+  tasks: iTask[];
 }

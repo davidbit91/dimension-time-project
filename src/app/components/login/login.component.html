@@ -1,4 +1,4 @@
-<mat-card class="form-card">
+<mat-card class="form-card" *ngIf='!isLoading'>
   <mat-card-content>
     <form (ngSubmit)="onSubmit()"[formGroup]="formGroup">
       <mat-form-field>
@@ -14,3 +14,6 @@
   </mat-card-content>
   <p>If you don't have an account you can register <a routerLink='/register'>here</a></p>
 </mat-card>
+
+
+<mat-progress-spinner mode="indeterminate" *ngIf='isLoading'></mat-progress-spinner>

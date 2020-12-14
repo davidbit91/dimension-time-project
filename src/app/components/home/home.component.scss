@@ -1,1 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.hero-text {
+    text-align: center;
+    h1 {
+        padding-top: 10vh;
+        padding-bottom: 35vh;
+    }
+    p {
+        padding: 15px;
+    }
+}

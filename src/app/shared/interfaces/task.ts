@@ -1,6 +1,9 @@
-export interface Task {
+import { iUser } from './user';
+
+export interface iTask {
   id: string;
   name: string;
-  tiempoEstimado: number;
-  tiempoRequirido: number;
+  startTime: number;
+  totalTime: string;
+  isFinished: boolean;
 }
