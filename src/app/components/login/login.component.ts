@@ -1,5 +1,5 @@
 import { AuthService } from './../../shared/services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
 
-  isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
@@ -20,19 +19,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit() {
-    this.isLoading = true;
-    this.auth.login(
-      this.formGroup.get('email').value,
-      this.formGroup.get('password').value
-    );
-
-    this.isLoading = false;
-    this.router.navigate(['/home']);
+    if(this.formGroup.get('email').value != '' &&  this.formGroup.get('password').value != ''){
+      this.auth.login(
+        this.formGroup.get('email').value,
+        this.formGroup.get('password').value
+      );
+      this.router.navigate(['/home']);
+    }
   }
 }

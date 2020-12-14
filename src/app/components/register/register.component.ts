@@ -24,14 +24,17 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      rPassword: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      rPassword: ['', [Validators.required, Validators.minLength(6)]],
+    },
+    {
+      validator: this.matchPassword('password', 'rPassword'),
     });
   }
   onSubmit() {
-    this.isLoading = true;
+
     this.auth.register(
       this.formGroup.get('email').value,
       this.formGroup.get('password').value
@@ -48,9 +51,30 @@ export class RegisterComponent implements OnInit {
         this.user.id = user.uid;
         this.firestore.create(this.user);
       }
-      this.isLoading = false;
     });
 
     this.router.navigate(['/home']);
   }
+
+  matchPassword(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      const passwordControl = formGroup.controls[password];
+      const confirmPasswordControl = formGroup.controls[confirmPassword];
+
+      if (!passwordControl || !confirmPasswordControl) {
+        return null;
+      }
+
+      if (confirmPasswordControl.errors && !confirmPasswordControl.errors.passwordMismatch) {
+        return null;
+      }
+
+      if (passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({ passwordMismatch: true });
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+    }
+  }
+
 }
