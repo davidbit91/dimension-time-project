@@ -1,0 +1,17 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card{
+  width: 25vw;
+  margin-top: 15px;
+}
+
+@media (max-width: 750px ){
+  mat-card{
+    width: 70vw;
+  }
+}

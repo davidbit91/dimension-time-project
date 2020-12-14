@@ -1,5 +1,15 @@
-<mat-list>
-  <mat-list-item role="listitem">Item 1</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<mat-card *ngFor="let task of user.tasks">
+    <mat-card-content>
+      <h2>{{task.name}}</h2>
+      <p *ngIf="task.isFinished">
+        Total time spent on this task: {{task.totalTime | date : "h 'hours' mm 'minutes'"}}
+      </p>
+      <p *ngIf="!task.isFinished">
+        Task started on: {{task.startTime | date : "LLLL d h:mm:ss"}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="finishTask(task.id)">Finish Task</button>
+    </mat-card-actions>
+</mat-card>
+
