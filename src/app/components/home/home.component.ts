@@ -1,3 +1,4 @@
+import { FirestoreService } from './../../shared/services/firestore.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../../shared/services/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -13,11 +14,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   user: iUser;
   loggedIn = false;
   sub: Subscription;
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private firestore: FirestoreService) {
     this.isLoading = true;
     this.sub = this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.loggedIn = true;
+        this.firestore.getUserById$(user.uid).subscribe(user => this.user = user);
       } else {
         this.loggedIn = false;
       }
