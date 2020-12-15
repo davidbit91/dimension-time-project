@@ -15,8 +15,6 @@ export class FirestoreService {
   }
 
   createTask(task: iTask) {
-    console.log(task);
-
     return this.afs
       .collection<iTask>('tasks')
       .doc(task.id)

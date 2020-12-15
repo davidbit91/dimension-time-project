@@ -20,8 +20,6 @@ export class AppComponent implements OnDestroy{
       } else {
         this.loggedIn = false;
       }
-      console.log(this.loggedIn);
-      console.log('APP');
     });
   }
 

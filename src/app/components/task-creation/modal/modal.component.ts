@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -13,7 +14,8 @@ export class ModalComponent implements OnInit {
   localList: string[];
   constructor(public dialogRef: MatDialogRef<ModalComponent>,
   @Inject(MAT_DIALOG_DATA) public data: any,
-  private formBuilder: FormBuilder) {}
+  private formBuilder: FormBuilder,
+  private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.dialogForm = this.formBuilder.group({
@@ -27,6 +29,7 @@ export class ModalComponent implements OnInit {
     arLocal = arLocal ? arLocal : [];
     arLocal.push(this.dialogForm.get('name').value);
     localStorage.setItem('task',JSON.stringify(arLocal));
+    this.snackBar.open("Task added to list", "Dismiss", {duration: 3000})
     this.dialogRef.close();
   }
 
