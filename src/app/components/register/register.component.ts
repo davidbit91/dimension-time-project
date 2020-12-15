@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
       })
       .catch((err) => {
         console.log("CATCH")
-        let snackBarRef = this.snackBar.open(err.message);
+        let snackBarRef = this.snackBar.open(err.message, 'Ok',{duration: 3000});
       });
   }
 
