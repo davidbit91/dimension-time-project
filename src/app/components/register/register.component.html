@@ -1,3 +1,4 @@
+
 <mat-card class="form-card" *ngIf='!isLoading'>
   <mat-card-content>
     <form (ngSubmit)="onSubmit()"[formGroup]="formGroup">
@@ -17,10 +18,12 @@
         <mat-label>Repeat Password</mat-label>
         <input matInput type="password" name="rPassword" formControlName="rPassword">
       </mat-form-field>
-      <button mat-raised-button type="submit">Register</button>
+      <button mat-raised-button type="submit" color='primary'>Register</button>
     </form>
   </mat-card-content>
   <p>You have an account? Login <a routerLink='/login'>here</a></p>
+
+  <button mat-button class='backButton' routerLink='/home'>Back</button>
 </mat-card>
 
 <mat-progress-spinner mode="indeterminate" *ngIf='isLoading'></mat-progress-spinner>

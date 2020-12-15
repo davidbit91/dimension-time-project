@@ -70,4 +70,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   calculateTime(n) {
     return Math.round(n / 3600000);
   }
+  checkIsFinished(){
+    return this.user.tasks.findIndex( e => e.isFinished == false) < 0 ? true : false;
+  }
 }

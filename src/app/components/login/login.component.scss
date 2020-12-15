@@ -1,3 +1,7 @@
+.backButton{
+  margin-left: 51%;
+}
+
 mat-card{
   width:20%;
   height: 30%;
@@ -32,14 +36,11 @@ color:white;
 }
 p{
   font-size: 12px;
-  max-width: 45%;
+  max-width: 65%;
 }
 a{
-  text-decoration:none;
+  text-decoration:underline;
   color: #fff;
-}
-a:hover{
-  text-decoration: underline;
 }
 
 

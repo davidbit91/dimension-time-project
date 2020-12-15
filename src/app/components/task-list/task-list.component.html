@@ -33,4 +33,5 @@
       </mat-card-actions>
     </mat-card>
   </ng-container>
+  <p *ngIf='user.tasks.length==0 || checkIsFinished()'>0 Tasks assigned</p>
 </div>
