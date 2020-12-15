@@ -5,7 +5,6 @@ import { iUser } from 'src/app/shared/interfaces/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -65,7 +64,11 @@ export class RegisterComponent implements OnInit {
       })
       .catch((err) => {
         console.log("CATCH")
+<<<<<<< HEAD
         let snackBarRef = this.snackBar.open(err.message, 'Ok',{duration: 3000});
+=======
+        this.snackBar.open(err.message, "Dismiss", {duration: 3000});
+>>>>>>> e17e198afab4c796eeb36fa9ede65c110568443a
       });
   }
 

@@ -6,7 +6,12 @@
         <p>If you don't have an account you can register <a routerLink='/register'>here</a></p>
     </div>
     <div class="hero-text" *ngIf="loggedIn">
-        <h1>Welcome {{user}}</h1>
+        <h1>Welcome {{user?.name}}</h1>
+
+        <h3>Pending Tasks</h3>
+        <div class="tasksContainer">
+          <app-task-list filter="finished"></app-task-list>
+        </div>
         <div class="homeButtons">
           <button mat-raised-button color='primary' routerLink='/task-create'>Add Task</button>
           <button mat-raised-button color='primary' routerLink='/task-list'>Task List</button>

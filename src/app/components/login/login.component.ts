@@ -3,6 +3,8 @@ import { AuthService } from './../../shared/services/auth.service';
 import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -30,8 +33,9 @@ export class LoginComponent implements OnInit {
       this.auth.login(
         this.formGroup.get('email').value,
         this.formGroup.get('password').value
-      );
-      this.router.navigate(['/home']);
+      )
+      .then(() => this.router.navigate(['/home']))
+      .catch(err => this.snackBar.open(err.message,'Dismiss',{duration: 3000}));
     }
   }
 }

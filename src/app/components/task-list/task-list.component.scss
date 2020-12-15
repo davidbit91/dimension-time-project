@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+div{
+  height: fit-content;
+  max-height: 90vh;
+  overflow: scroll;
+}
 mat-card{
   width: 25vw;
   margin-top: 15px;

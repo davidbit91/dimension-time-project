@@ -48,9 +48,10 @@ export class TaskCreationComponent implements OnInit, DoCheck, OnDestroy {
   addTask(){
     if(this.formGroup.get('task').value == 'createNew'){
       const dialogRef = this.dialog.open(ModalComponent, {
-        width: '20%',
-        height: '30%',
-        data: ''
+        width: '450px',
+        height: '300px',
+        data: '',
+        position: {top: "250px"}
       });
 
       dialogRef.afterClosed().subscribe(result => {
