@@ -9,7 +9,13 @@ div{
   height: fit-content;
   max-height: 90vh;
   overflow: scroll;
+  scrollbar-width: none;
 }
+
+div::-webkit-scrollbar{
+  display: none;
+}
+
 mat-card{
   width: 25vw;
   margin-top: 15px;
@@ -19,4 +25,8 @@ mat-card{
   mat-card{
     width: 70vw;
   }
+}
+
+p{
+  margin-top: 15px;
 }

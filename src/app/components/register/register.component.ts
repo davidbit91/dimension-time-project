@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit {
         this.formGroup.get('password').value
       )
       .then( () => {
-        console.log("THEN");
         this.user = {
           id: '',
           email: this.formGroup.get('email').value,
@@ -63,7 +62,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/home']);
       })
       .catch((err) => {
-        console.log("CATCH")
         this.snackBar.open(err.message, "Dismiss", {duration: 3000});
       });
   }

@@ -9,7 +9,7 @@ import { iUser } from 'src/app/shared/interfaces/user';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   isLoading: boolean = false;
   user: iUser;
   loggedIn = false;
@@ -28,8 +28,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void{
-    this.sub.unsubscribe();
-  }
 }

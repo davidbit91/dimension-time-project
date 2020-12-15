@@ -27,7 +27,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
       if (user && user.uid) {
         this.firestore.getUserById$(user.uid).subscribe((userInfo) => {
           this.user = userInfo;
-          console.log(this.user);
         });
       } else {
         this.router.navigate(['/home']);
@@ -57,20 +56,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   calculateFinishedTime(t: Task) {
     const actualTime = Date.now();
-    console.log(actualTime);
-    console.log(t.startTime);
-
     t.totalTime = actualTime - t.startTime;
-    console.log(t.totalTime);
-
     t.isFinished = true;
-
     return t;
   }
   calculateTime(n) {
     return Math.round(n / 3600000);
   }
   checkIsFinished(){
-    return this.user.tasks.findIndex( e => e.isFinished == false) < 0 ? true : false;
+    return this.user?.tasks.findIndex( e => e.isFinished == false) < 0 ? true : false;
   }
 }

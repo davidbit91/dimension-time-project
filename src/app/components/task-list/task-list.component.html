@@ -2,6 +2,7 @@
   <ng-container *ngFor="let task of user?.tasks">
 
     <ng-container *ngIf="filter == 'finished'">
+
       <mat-card *ngIf="!task.isFinished">
         <mat-card-content>
           <h2>{{task.name}}</h2>
@@ -33,5 +34,8 @@
       </mat-card-actions>
     </mat-card>
   </ng-container>
-  <p *ngIf='user.tasks.length==0 || checkIsFinished()'>0 Tasks assigned</p>
+
+  <p *ngIf='checkIsFinished() && filter =="finished"'>0 pending tasks</p>
+  <p *ngIf="user?.tasks.length==0 && filter != 'finished'">0 assigned tasks</p>
+
 </div>
