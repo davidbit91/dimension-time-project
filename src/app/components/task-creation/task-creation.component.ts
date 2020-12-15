@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { ModalComponent } from './modal/modal.component';
 import { Component, DoCheck, OnInit, OnDestroy } from '@angular/core';
@@ -16,7 +17,7 @@ import { FirestoreService } from 'src/app/shared/services/firestore.service';
 })
 export class TaskCreationComponent implements OnInit, DoCheck, OnDestroy {
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private firestore: FirestoreService, private dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private firestore: FirestoreService, private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
   user: iUser;
   formGroup: FormGroup;
@@ -74,6 +75,6 @@ export class TaskCreationComponent implements OnInit, DoCheck, OnDestroy {
     });
     this.user.tasks = tl;
 
-    this.firestore.updateUser(this.user);
+    this.firestore.updateUser(this.user).then(() =>  this.snackBar.open("Task started", "Dismiss", {duration: 3000}));
   }
 }
