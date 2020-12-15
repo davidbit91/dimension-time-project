@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
 import { AuthService } from './../../shared/services/auth.service';
 import { iUser } from './../../shared/interfaces/user';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Task } from './../../shared/classes/task';
 
 @Component({
@@ -9,21 +11,29 @@ import { Task } from './../../shared/classes/task';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
 
+  sub: Subscription;
   user : iUser;
-  constructor(private auth: AuthService, private firestore: FirestoreService) {
-    this.auth.isLogged$().subscribe((user) => {
+
+  constructor(private auth: AuthService, private firestore: FirestoreService, private router: Router) {
+    this.sub = this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.firestore.getUserById$(user.uid).subscribe(userInfo =>{
           this.user = userInfo;
           console.log(this.user);
         })
+      } else{
+        this.router.navigate(['/home']);
       }
     });
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void{
+    this.sub.unsubscribe();
   }
 
   finishTask(id) {

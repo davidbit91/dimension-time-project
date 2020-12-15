@@ -23,7 +23,8 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit(){
-    const arLocal = JSON.parse(localStorage.getItem('task'));
+    let arLocal = JSON.parse(localStorage.getItem('task'));
+    arLocal = arLocal ? arLocal : [];
     arLocal.push(this.dialogForm.get('name').value);
     localStorage.setItem('task',JSON.stringify(arLocal));
     this.dialogRef.close();

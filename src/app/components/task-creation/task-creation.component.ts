@@ -1,5 +1,6 @@
+import { Subscription } from 'rxjs';
 import { ModalComponent } from './modal/modal.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/shared/classes/task';
@@ -13,27 +14,35 @@ import { FirestoreService } from 'src/app/shared/services/firestore.service';
   templateUrl: './task-creation.component.html',
   styleUrls: ['./task-creation.component.scss']
 })
-export class TaskCreationComponent implements OnInit {
+export class TaskCreationComponent implements OnInit, DoCheck, OnDestroy {
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private firestore: FirestoreService, private dialog: MatDialog) {
   }
   user: iUser;
   formGroup: FormGroup;
   taskList: string[];
+  sub: Subscription;
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       task: ['', Validators.required]
     });
 
-    this.auth.isLogged$().subscribe((user) => {
+    this.sub = this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.firestore.getUserById$(user.uid).subscribe(userInfo =>{
           this.user = userInfo;
         })
       }
     });
+  }
+
+  ngDoCheck(): void{
     this.taskList = JSON.parse(localStorage.getItem('task'));
+  }
+
+  ngOnDestroy(): void{
+    this.sub.unsubscribe();
   }
 
   addTask(){

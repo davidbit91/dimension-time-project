@@ -1,5 +1,6 @@
+import { Subscription } from 'rxjs';
 import { AuthService } from './../../shared/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { iUser } from 'src/app/shared/interfaces/user';
 
 @Component({
@@ -7,13 +8,14 @@ import { iUser } from 'src/app/shared/interfaces/user';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   user: iUser;
   loggedIn = false;
+  sub: Subscription;
   constructor(private auth: AuthService) {
     this.isLoading = true;
-    this.auth.isLogged$().subscribe((user) => {
+    this.sub = this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.loggedIn = true;
       } else {
@@ -21,9 +23,11 @@ export class HomeComponent implements OnInit {
       }
       this.isLoading = false;
     });
-    console.log('HOME');
-
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void{
+    this.sub.unsubscribe();
+  }
 }
