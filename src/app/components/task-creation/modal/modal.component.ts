@@ -25,12 +25,16 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit(){
-    let arLocal = JSON.parse(localStorage.getItem('task'));
-    arLocal = arLocal ? arLocal : [];
-    arLocal.push(this.dialogForm.get('name').value);
-    localStorage.setItem('task',JSON.stringify(arLocal));
-    this.snackBar.open("Task added to list", "Dismiss", {duration: 3000})
-    this.dialogRef.close();
+    if(this.dialogForm.get('name').value == ''){
+      this.snackBar.open("Select a task.", "Dismiss", {duration: 3000});
+    }else{
+      let arLocal = JSON.parse(localStorage.getItem('task'));
+      arLocal = arLocal ? arLocal : [];
+      arLocal.push(this.dialogForm.get('name').value);
+      localStorage.setItem('task',JSON.stringify(arLocal));
+      this.snackBar.open("Task added to list", "Dismiss", {duration: 3000})
+      this.dialogRef.close();
+    }
   }
 
   onNoClick(): void {
