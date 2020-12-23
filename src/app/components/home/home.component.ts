@@ -1,3 +1,4 @@
+import { first, tap } from 'rxjs/operators';
 import { FirestoreService } from './../../shared/services/firestore.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../../shared/services/auth.service';
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   sub: Subscription;
   constructor(private auth: AuthService, private firestore: FirestoreService) {
     this.isLoading = true;
+    /*
     this.sub = this.auth.isLogged$().subscribe((user) => {
       if (user && user.uid) {
         this.loggedIn = true;
@@ -25,7 +27,16 @@ export class HomeComponent implements OnInit {
       }
       this.isLoading = false;
     });
+    */
   }
 
-  ngOnInit(): void {}
+  async loadUser(){
+    const fbUser = await this.auth.isLogged$().pipe(first()).toPromise();
+    console.log("aaa", fbUser.uid);
+  }
+
+  ngOnInit(): void {
+    console.log("HOME");
+    this.loadUser();
+  }
 }
